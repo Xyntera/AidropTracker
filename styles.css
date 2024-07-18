@@ -1,54 +1,23 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Calendas+Plus&family=Vintage+Fonts&display=swap');
+
 /* Define CSS variables for easy theme switching */
 :root {
-    --primary-color: #7B2CBF;
-    --secondary-color: #9D4EDD;
-    --background-color: #F0F0F0;
-    --text-color: #333;
-    --header-background: linear-gradient(135deg, #7B2CBF, #4B0082);
-    --table-header-background: #7B2CBF;
-    --table-row-hover: #E0BBE4;
-    --button-background: linear-gradient(135deg, #9D4EDD, #7B2CBF);
-    --button-hover: #9D4EDD;
+    --primary-color: #0D6EFD;
+    --secondary-color: #00FFFF;
+    --background-color: #0A0A0A;
+    --text-color: #E0E0E0;
+    --header-background: linear-gradient(135deg, #0D6EFD, #1B1B1B);
+    --table-header-background: #0D6EFD;
+    --table-row-hover: #003B73;
+    --button-background: linear-gradient(135deg, #00FFFF, #0D6EFD);
+    --button-hover: #00FFFF;
     --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     --transition: 0.3s ease-in-out;
 }
 
-/* Dark mode variables */
-body.dark {
-    --primary-color: #1E1E1E;
-    --secondary-color: #333;
-    --background-color: #121212;
-    --text-color: #E0E0E0;
-    --header-background: linear-gradient(135deg, #333, #1E1E1E);
-    --table-header-background: #333;
-    --table-row-hover: #2A2A2A;
-    --button-background: linear-gradient(135deg, #444, #222);
-    --button-hover: #333;
-}
-
-/* High Contrast mode variables */
-body.high-contrast {
-    --primary-color: #000000;
-    --secondary-color: #FFD700;
-    --background-color: #FFFFFF;
-    --text-color: #000000;
-    --header-background: linear-gradient(135deg, #000000, #FFD700);
-    --table-header-background: #000000;
-    --table-row-hover: #FFD700;
-    --button-background: linear-gradient(135deg, #FFD700, #000000);
-    --button-hover: #FFD700;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: var(--transition);
-}
-
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Vintage Fonts', 'Calendas Plus', 'Abril Fatface', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
 }
@@ -66,8 +35,72 @@ header {
 
 header h1 {
     margin-left: 20px;
-    animation: fadeIn 1s ease-in-out;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    animation: glow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-in-out;
 }
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
+    }
+    to {
+        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--secondary-color);
+    }
+}
+
+#airdrops h2 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: glow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
+    }
+    to {
+        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--secondary-color);
+    }
+}
+
+#dashboard h2 {
+    font-family: 'Calendas Plus', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: glow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
+    }
+    to {
+        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--secondary-color);
+    }
+}
+
+
+
 
 .switch {
     position: relative;
@@ -128,7 +161,7 @@ section {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--secondary-color);
+    background: var(--header-background);
     box-shadow: var(--shadow);
     border-radius: 8px;
     padding: 2rem;
@@ -150,7 +183,6 @@ section {
     animation: counterAnimation 1s ease-in-out;
 }
 
-/* New Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -184,10 +216,11 @@ section {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: var(--secondary-color);
+    background: linear-gradient(135deg, #0D6EFD, #00FFFF);
     box-shadow: var(--shadow);
     border-radius: 8px;
     animation: slideIn 1s ease-in-out;
+    color: var(--background-color); /* Ensuring text is readable on neon background */
 }
 
 table th, table td {
