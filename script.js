@@ -1,18 +1,18 @@
-// Example data (replace with your actual airdrop data)
-const airdrops = [
-    { name: 'Community Gaming', link: 'https://www.communitygaming.io/quests', status: 'Pending', lastLogin: '' },
-    { name: 'Maple Story', link: 'https://msu.io/quest/list', status: 'Pending', lastLogin: '' },
-    { name: 'Avalon', link: 'https://avalon.online/quests', status: 'Pending', lastLogin: '' },
-    { name: 'One Football', link: 'https://club.onefootball.com/join', status: 'Pending', lastLogin: '' },
-    { name: 'Sonic Odyssey', link: 'https://odyssey.sonic.game', status: 'Pending', lastLogin: '' },
-];
-
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const airdropsTable = document.getElementById('airdrops-table');
     const totalAirdropsCounter = document.getElementById('total-airdrops');
     const pendingAirdropsCounter = document.getElementById('pending-airdrops');
     const loggedInTodayCounter = document.getElementById('logged-in-today');
+
+    // Example data (replace with your actual airdrop data)
+    const airdrops = [
+        { name: 'Community Gaming', link: 'https://www.communitygaming.io/quests', status: 'Pending', lastLogin: '' },
+        { name: 'Maple Story', link: 'https://msu.io/quest/list', status: 'Pending', lastLogin: '' },
+        { name: 'Avalon', link: 'https://avalon.online/quests', status: 'Pending', lastLogin: '' },
+        { name: 'One Football', link: 'https://club.onefootball.com/join', status: 'Pending', lastLogin: '' },
+        { name: 'Sonic Odyssey', link: 'https://odyssey.sonic.game', status: 'Pending', lastLogin: '' },
+    ];
 
     // Function to populate the airdrops table
     function populateAirdropsTable() {
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDashboard();
     }
 
-    // Function to update status (for demonstration purposes)
+    // Function to update status
     window.updateStatus = function(airdropName, newStatus, button) {
         const index = airdrops.findIndex(airdrop => airdrop.name === airdropName);
         if (index !== -1) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             row.querySelector('td:nth-child(4)').textContent = airdrops[index].lastLogin;
             updateDashboard(); // Update dashboard counters after status change
         }
-    }
+    };
 
     // Function to update dashboard counters
     function updateDashboard() {
@@ -63,8 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial population of table and dashboard
     populateAirdropsTable();
 
-    // Event listener for theme toggle switch (optional)
+    // Event listener for theme toggle switch
     themeToggle.addEventListener('change', function() {
         document.body.classList.toggle('dark');
+        document.body.classList.toggle('light');
     });
 });
