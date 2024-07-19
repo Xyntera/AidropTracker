@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalAirdropsCounter = document.getElementById('total-airdrops');
     const pendingAirdropsCounter = document.getElementById('pending-airdrops');
     const loggedInTodayCounter = document.getElementById('logged-in-today');
+    const searchBar = document.getElementById('search-bar');
 
     // Example data (replace with your actual airdrop data)
     const airdrops = [
@@ -15,11 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Function to populate the airdrops table
-    function populateAirdropsTable() {
+    function populateAirdropsTable(filteredAirdrops = airdrops) {
         const tableBody = airdropsTable.querySelector('tbody');
         tableBody.innerHTML = '';
 
-        airdrops.forEach(airdrop => {
+        filteredAirdrops.forEach(airdrop => {
             const row = `
                 <tr>
                     <td>${airdrop.name}</td>
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tableBody.innerHTML += row;
         });
 
-        updateDashboard();
+        updateDashboard(filteredAirdrops);
     }
 
     // Function to update status
@@ -45,20 +46,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const row = button.closest('tr');
             row.querySelector('td:nth-child(3)').textContent = newStatus;
             row.querySelector('td:nth-child(4)').textContent = airdrops[index].lastLogin;
-            updateDashboard(); // Update dashboard counters after status change
+            updateDashboard(airdrops); // Update dashboard counters after status change
         }
     };
 
     // Function to update dashboard counters
-    function updateDashboard() {
-        const totalAirdrops = airdrops.length;
-        const pendingAirdrops = airdrops.filter(airdrop => airdrop.status === 'Pending').length;
-        const loggedInToday = airdrops.filter(airdrop => airdrop.lastLogin === new Date().toISOString().split('T')[0]).length;
+    function updateDashboard(filteredAirdrops = airdrops) {
+        const totalAirdrops = filteredAirdrops.length;
+        const pendingAirdrops = filteredAirdrops.filter(airdrop => airdrop.status === 'Pending').length;
+        const loggedInToday = filteredAirdrops.filter(airdrop => airdrop.lastLogin === new Date().toISOString().split('T')[0]).length;
 
         totalAirdropsCounter.textContent = totalAirdrops;
         pendingAirdropsCounter.textContent = pendingAirdrops;
         loggedInTodayCounter.textContent = loggedInToday;
     }
+
+    // Function to filter airdrops based on search query
+    window.filterAirdrops = function() {
+        const query = searchBar.value.toLowerCase();
+        const filteredAirdrops = airdrops.filter(airdrop => airdrop.name.toLowerCase().includes(query));
+        populateAirdropsTable(filteredAirdrops);
+    };
 
     // Initial population of table and dashboard
     populateAirdropsTable();
