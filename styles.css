@@ -264,37 +264,5 @@ button:hover {
     animation: fadeIn 1s ease-in-out;
 }
 
-header {
-    background: var(--header-background);
-    color: var(--text-color);
-    text-align: center;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: var(--shadow);
-}
-
-header h1 {
-    margin-left: 20px;
-    font-family: 'Abril Fatface', cursive;
-    animation: fadeIn 1s ease-in-out, textGlow 1.5s ease-in-out infinite alternate;
-    text-shadow: 0 0 10px var(--secondary-color);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes textGlow {
-    from {
-        text-shadow: 0 0 5px var(--secondary-color);
-    }
-    to {
-        text-shadow: 0 0 20px var(--secondary-color);
-    }
-}
-
 /* ... Rest of your CSS ... */
 
