@@ -1,30 +1,61 @@
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Calendas+Plus&family=Vintage+Fonts&display=swap');
-
-/* Define CSS variables for easy theme switching */
+/* Define CSS variables for themes */
 :root {
-    --primary-color: #0D6EFD;
-    --secondary-color: #00FFFF;
-    --background-color: #0A0A0A;
-    --text-color: #E0E0E0;
-    --header-background: linear-gradient(135deg, #0D6EFD, #1B1B1B);
-    --table-header-background: #0D6EFD;
-    --table-row-hover: #003B73;
-    --button-background: linear-gradient(135deg, #00FFFF, #0D6EFD);
+    --primary-color: #00FFFF;
+    --secondary-color: #0D6EFD;
+    --background-color: #1c1c1c;
+    --text-color: #f0f0f0;
+    --header-background: linear-gradient(135deg, #0D6EFD, #00FFFF);
+    --table-header-background: #333;
+    --table-row-hover: #444;
+    --button-background: linear-gradient(135deg, #0D6EFD, #00FFFF);
     --button-hover: #00FFFF;
-    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     --transition: 0.3s ease-in-out;
 }
 
+/* Additional theme variables */
+body.light {
+    --primary-color: #0D6EFD;
+    --secondary-color: #00FFFF;
+    --background-color: #ffffff;
+    --text-color: #333;
+    --header-background: linear-gradient(135deg, #00FFFF, #0D6EFD);
+    --table-header-background: #f0f0f0;
+    --table-row-hover: #ddd;
+    --button-background: linear-gradient(135deg, #00FFFF, #0D6EFD);
+    --button-hover: #0D6EFD;
+}
+
+/* Dark theme variables */
+body.dark {
+    --primary-color: #0D6EFD;
+    --secondary-color: #00FFFF;
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-background: linear-gradient(135deg, #0D6EFD, #00FFFF);
+    --table-header-background: #333;
+    --table-row-hover: #2a2a2a;
+    --button-background: linear-gradient(135deg, #0D6EFD, #00FFFF);
+    --button-hover: #00FFFF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: var(--transition);
+}
+
 body {
-    font-family: 'Vintage Fonts', 'Calendas Plus', 'Abril Fatface', sans-serif;
+    font-family: 'Vintage', Arial, sans-serif;
+    line-height: 1.6;
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
 header {
     background: var(--header-background);
-    color: var(--secondary-color);
+    color: var(--text-color);
     text-align: center;
     padding: 1rem 0;
     display: flex;
@@ -36,71 +67,18 @@ header {
 header h1 {
     margin-left: 20px;
     font-family: 'Abril Fatface', cursive;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    animation: glow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-in-out;
+    animation: fadeIn 1s ease-in-out, textGlow 1.5s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
-@keyframes glow {
+@keyframes textGlow {
     from {
-        text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
+        text-shadow: 0 0 5px var(--secondary-color);
     }
     to {
-        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--secondary-color);
+        text-shadow: 0 0 20px var(--secondary-color);
     }
 }
-
-#airdrops h2 {
-    font-family: 'Abril Fatface', cursive;
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-bottom: 1rem;
-    animation: glow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
-    }
-    to {
-        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--secondary-color);
-    }
-}
-
-#dashboard h2 {
-    font-family: 'Calendas Plus', serif;
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-bottom: 1rem;
-    animation: glow 1.5s ease-in-out infinite alternate, fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color);
-    }
-    to {
-        text-shadow: 0 0 20px var(--secondary-color), 0 0 30px var(--secondary-color), 0 0 40px var(--secondary-color);
-    }
-}
-
-
-
 
 .switch {
     position: relative;
@@ -157,11 +135,19 @@ section {
     margin-bottom: 2rem;
 }
 
+#dashboard {
+    color: var(--text-color);
+    background: var(--header-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
 .dashboard-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: var(--header-background);
     box-shadow: var(--shadow);
     border-radius: 8px;
     padding: 2rem;
@@ -175,6 +161,7 @@ section {
 
 .counter h3 {
     margin-bottom: 0.5rem;
+    font-family: 'Calendas Plus', serif;
 }
 
 .counter p {
@@ -183,6 +170,7 @@ section {
     animation: counterAnimation 1s ease-in-out;
 }
 
+/* New Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -191,12 +179,6 @@ section {
 @keyframes counterAnimation {
     from { opacity: 0; transform: scale(0.5); }
     to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-30px); }
-    60% { transform: translateY(-15px); }
 }
 
 @keyframes bounceIn {
@@ -220,7 +202,7 @@ table {
     box-shadow: var(--shadow);
     border-radius: 8px;
     animation: slideIn 1s ease-in-out;
-    color: var(--background-color); /* Ensuring text is readable on neon background */
+    color: var(--text-color); /* Ensuring text is readable on neon background */
 }
 
 table th, table td {
@@ -232,7 +214,7 @@ table th, table td {
 
 table th {
     background-color: var(--table-header-background);
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 table tbody tr:hover {
@@ -243,14 +225,14 @@ footer {
     text-align: center;
     padding: 1rem 0;
     background-color: var(--header-background);
-    color: var(--secondary-color);
+    color: var(--text-color);
     transition: var(--transition);
     box-shadow: var(--shadow);
 }
 
 button {
     background: var(--button-background);
-    color: var(--secondary-color);
+    color: var(--text-color);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -275,3 +257,4 @@ button:hover {
         margin: 10px 0;
     }
 }
+
