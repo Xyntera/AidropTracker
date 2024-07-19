@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'Avalon', link: 'https://avalon.online/quests', status: 'Pending', lastLogin: '' },
         { name: 'One Football', link: 'https://club.onefootball.com/join', status: 'Pending', lastLogin: '' },
         { name: 'Sonic Odyssey', link: 'https://odyssey.sonic.game', status: 'Pending', lastLogin: '' },
+        { name: 'Sender Wallet', link: 'https://www.senderdao.io/', status: 'Pending', lastLogin: '' },
+        { name: 'Plume testnet', link: 'https://miles.plumenetwork.xyz/', status: 'Pending', lastLogin: '' },
     ];
 
     // Function to populate the airdrops table
