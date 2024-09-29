@@ -7,13 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchBar = document.getElementById('search-bar');
 
     // Example data (replace with your actual airdrop data)
-    const airdrops = [
-        { name: 'Community Gaming', link: 'https://www.communitygaming.io/quests', status: 'Pending', lastLogin: '' },
-        { name: 'Maple Story', link: 'https://msu.io/quest/list', status: 'Pending', lastLogin: '' },
-        { name: 'Avalon', link: 'https://avalon.online/quests', status: 'Pending', lastLogin: '' },
-        { name: 'One Football', link: 'https://club.onefootball.com/join', status: 'Pending', lastLogin: '' },
-        { name: 'Sonic Odyssey', link: 'https://odyssey.sonic.game', status: 'Pending', lastLogin: '' },
-    ];
+const airdrops = [
+    { name: 'Community Gaming', link: 'https://www.communitygaming.io/quests', status: 'Pending', lastLogin: '' },
+    { name: 'Maple Story', link: 'https://msu.io/quest/list', status: 'Pending', lastLogin: '' },
+    { name: 'Avalon', link: 'https://avalon.online/quests', status: 'Pending', lastLogin: '' },
+    { name: 'One Football', link: 'https://club.onefootball.com/join', status: 'Pending', lastLogin: '' },
+    { name: 'Sonic Odyssey', link: 'https://odyssey.sonic.game', status: 'Pending', lastLogin: '' },
+    { name: 'Tabizoo', link: 'https://carnival.tabichain.com/', status: 'Pending', lastLogin: '' }
+];
 
     // Function to populate the airdrops table
     function populateAirdropsTable(filteredAirdrops = airdrops) {
